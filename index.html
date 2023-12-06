@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css"> 
     <title>Cashew</title>
 </head>
-<body onload="checkCode()">
+<body onload="showModal()">
     <div id="pageContent" style="display: none;">    
         <div class="carousel">
 
@@ -137,9 +137,16 @@
     <div class="cursor"></div>
     <div class="cursor cursor2"></div>
       <script  src="./script.js"></script>
-      <div id="overlay" class="overlay">
-        <div class="overlay-content">
-          <p>Access Blocked</p>
+
+
+      <div id="customModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <p id="authPrompt">Enter the authentication code:</p>
+          <input type="password" id="authCode" />
+          <button onclick="checkCode()">Submit</button>
+          <p id="authError" style="color: red; display: none;">Incorrect code. Please try again.</p>
+          <div id="timer" style="display: none;"></div>
         </div>
       </div>
     </body>
