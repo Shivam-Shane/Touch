@@ -1,7 +1,7 @@
 /*--------------------
 Vars
 --------------------*/
-let progress = 1
+let progress = 6
 let startX = 0
 let active = 0
 let isDown = false
@@ -9,7 +9,7 @@ let isDown = false
 /*--------------------
 Contants
 --------------------*/
-const speedWheel = 0.02
+const speedWheel = 0.05
 const speedDrag = -0.1
 
 /*--------------------
