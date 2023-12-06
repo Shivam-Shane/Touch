@@ -92,3 +92,20 @@ document.addEventListener('mouseup', handleMouseUp)
 document.addEventListener('touchstart', handleMouseDown)
 document.addEventListener('touchmove', handleMouseMove)
 document.addEventListener('touchend', handleMouseUp)
+
+const predefinedCode = 'Shane';
+
+function checkCode() {
+    const userCode = prompt('Enter the authentication code:');
+    if (userCode === predefinedCode) {
+        // Correct code, show the content
+        document.getElementById('pageContent').style.display = 'block';
+        alert('Authentication successful! You can now access the page.');
+    } else {
+        // Incorrect code, show the overlay and deny access
+        document.getElementById('overlay').style.display = 'block';
+        alert('Authentication failed. Access denied.');
+        // You can redirect or take other actions here if needed
+    }
+}
+
