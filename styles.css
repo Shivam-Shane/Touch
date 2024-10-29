@@ -1,13 +1,13 @@
 body {
-  overflow: hidden;
+  overflow: visible;
   font-family: "Roboto", serif;
-  background: linear-gradient(135deg, rgb(249, 16, 16), #9909e0);
+  background: white;
 }
 
 .carousel {
   position: relative;
   z-index: 1;
-  height: 100vh;
+  height: 180vh;
   overflow: hidden;
   pointer-events: none;
 }
@@ -22,7 +22,7 @@ body {
   --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
   overflow: hidden;
   position: absolute;
-  z-index: var(--zIndex);
+  z-index: 1;
   width: var(--width);
   height: var(--height);
   margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
@@ -51,6 +51,14 @@ body {
   opacity: var(--opacity);
   font-family: "Orelo-sw-db", serif;
 }
+
+.carousel-box img:hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+
 .carousel-item .carousel-box:before {
   content: "";
   position: absolute;
@@ -123,7 +131,6 @@ body {
   opacity: 0.4;
 }
 
-
 .cursor {
   position: fixed;
   z-index: 10;
@@ -144,6 +151,12 @@ body {
     display: block;
   }
 }
+@media (max-width: 768px) {
+  .video-grid {
+      grid-template-columns: 1fr; /* Switch to a single column on small screens */
+  }
+}
+
 
 .cursor2 {
   --size: 2px;
@@ -200,4 +213,104 @@ body {
 
 .modal button:hover {
   background-color: #2980b9;
+}
+
+/* Additional styles for video section */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px; /* Space between videos */
+  margin: 20px; /* Margin around the grid */
+}
+
+.video-container {
+  position: relative;
+  width: 100%; /* Full width of the grid cell */
+  overflow: hidden; /* Hide overflow if necessary */
+  border-radius: 10px; /* Optional: rounded corners */
+}
+
+.video-container video {
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+}
+
+.surprise-section {
+  position: fixed; /* Use absolute positioning */
+  top: 20px; /* Position it 20px from the top */
+  right: 20px; /* Position it 20px from the right */
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+.image {
+  display: none; /* Start with images hidden */
+  margin-top: 20px;
+  border-radius: 50%; /* Makes the image circular */
+  width: 150px; /* Adjust the width */
+  height: 150px; /* Adjust the height to match width for a circle */
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  transition: opacity 1s ease; /* Transition effect for opacity */
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #6200ea;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3700b3;
+}
+
+.hidden {
+  display: none;
+  transition: opacity 1s ease; /* Smooth fading effect */
+  opacity: 0;
+}
+
+.image:not(.hidden) {
+  opacity: 1;
+}
+.visible {
+  display: block; /* Show the image */
+  opacity: 1; /* Ensure full opacity */
+}
+
+.hidden {
+  opacity: 0; /* Hide the image with opacity */
+  transition: opacity 1s ease; /* Smooth transition for fading out */
+}
+
+.floating-hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10000; /* Simplified and consistent z-index */
+  top: 0;
+  left: 0;
+}
+
+.heart {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 5s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes float {
+  0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
+  }
 }

@@ -109,9 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 /*--------------------
 Authentication Modal
 --------------------*/
-const predefinedCodes = ['Shane', 'Shiva', 'Shivam', 'guddu', 'kaju'];
+const predefinedCodes = ['shane', 'shiva', 'pilla', 'kaju','12'];
 let incorrectAttempts = 0;
-const maxAttempts = 5;
+const maxAttempts = 10;
 const blockDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
 const localStorageKey = 'blockTimestamp';
 
@@ -133,6 +133,7 @@ function closeModal() {
     document.getElementById('customModal').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
 }
+const audio = document.getElementById('audioPlayer');
 
 function checkCode() {
     const userCode = document.getElementById('authCode').value;
@@ -148,7 +149,14 @@ function checkCode() {
     if (predefinedCodes.includes(userCode)) {
         // Correct code, show the content
         document.getElementById('pageContent').style.display = 'block';
+        
         closeModal();
+
+         // Play audio automatically on successful authentication
+         audio.play().catch((error) => {
+            console.log('Autoplay was prevented. User interaction may be needed.');
+        });
+
         resetAttempts();
     } else {
         // Incorrect code
@@ -222,3 +230,109 @@ function showTimer() {
         timerElement.style.display = 'none';
     }
 }
+
+// Confetti function
+function launchConfetti() {
+    confetti({
+        particleCount: 1100,
+        spread: 100,
+        drift: 0.1,
+        origin: { x: 0.8, y: 0.5 } // Adjust this to control the confetti position
+
+    });
+}
+
+// Click on surprise button images
+let currentImageIndex = 0;
+let cycleCount = 0; // Counter for cycle repetitions
+const maxCycles = 3; // Limit to 3 repetitions
+const images = document.querySelectorAll('.image');
+
+function showImages() {
+    
+    // Add a 1-second delay before triggering the confetti effect
+    setTimeout(() => {
+        launchConfetti();
+    }, 100);
+
+    // Start showing images
+    displayNextImage();
+}
+
+function displayNextImage() {
+    //Hide the previous image if it's not the first one
+    if (currentImageIndex > 0) {
+        images[currentImageIndex - 1].classList.add('hidden'); // Fade out previous image
+    }
+
+    // Show current image
+    images[currentImageIndex].classList.remove('hidden'); // Fade in current image
+    images[currentImageIndex].style.display = 'block';
+
+    // Move to the next image after some time
+    setTimeout(() => {
+        // Fade out current image after showing it for 2 seconds
+        images[currentImageIndex].classList.add('hidden'); // Start fading out
+
+        currentImageIndex++;
+
+        if (currentImageIndex < images.length) {
+            setTimeout(displayNextImage, 1000); // Wait for the fade out to complete
+        } else {
+             // One cycle completed, reset index
+            currentImageIndex = 0; 
+            cycleCount++; // Increase cycle count
+            if (cycleCount < maxCycles) {
+                 // Restart the cycle if cycle count is less than maxCycles
+                 setTimeout(displayNextImage, 1000); // Pause before restarting the cycle
+            }
+            else {
+            // Stop cycling if maxCycles reached
+            console.log("Image cycle completed 3 times. Stopping.");
+            }
+        }
+    }, 2000); // Show each image for 2 seconds
+}
+
+
+
+// Function to create and animate hearts
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+
+    // Array of different emojis
+    const emojis = ["❤️", "💖", "💜", "💙", "💚", "💛", "🧡", "💗", "💓", "💞","😘","💕","💖","🫠","🤍","😍","🤎","🩵","💚","🩶","🫶","🫶"," "];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]; // Randomly select an emoji
+
+    heart.innerHTML = randomEmoji;
+
+    // Randomize position
+    const x = Math.random() * window.innerWidth;
+    heart.style.left = `${x}px`;
+
+    // Randomize animation duration
+    const duration = Math.random() * 10 + 5; // 15s to 10s
+    heart.style.animationDuration = `${duration}s`;
+
+    // Randomize starting position
+    heart.style.top = `${window.innerHeight}px`;
+
+    // Append heart to the container
+    document.getElementById('floatingHearts').appendChild(heart);
+
+    // Remove heart after animation is complete
+    heart.addEventListener('animationend', () => {
+        heart.remove();
+    });
+}
+
+// Generate multiple hearts
+const heartCount = 100; // Change this value for more or fewer hearts
+for (let i = 0; i < heartCount; i++) {
+    createHeart();
+}
+
+// Create a new heart every milisecond
+setInterval(createHeart, 100); // Adjust the interval as needed
+needed
