@@ -152,10 +152,18 @@ function checkCode() {
         
         closeModal();
 
-         // Play audio automatically on successful authentication
-         audio.play().catch((error) => {
-            console.log('Autoplay was prevented. User interaction may be needed.');
-        });
+        setTimeout(() => {
+            audio.play().catch((error) => {
+                console.log('Autoplay was prevented. User interaction may be needed.');
+            });
+        }, 5000);
+
+        const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.play().catch(error => {
+                    console.error('Autoplay failed:', error);
+                });
+            });
 
         resetAttempts();
     } else {
@@ -328,10 +336,10 @@ function createHeart() {
 }
 
 // Generate multiple hearts
-const heartCount = 100; // Change this value for more or fewer hearts
+const heartCount = 70; // Change this value for more or fewer hearts
 for (let i = 0; i < heartCount; i++) {
     createHeart();
 }
 
 // Create a new heart every milisecond
-setInterval(createHeart, 100); // Adjust the interval as needed
+setInterval(createHeart, 10000); // Adjust the interval as needed

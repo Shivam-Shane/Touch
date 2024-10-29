@@ -219,22 +219,24 @@ body {
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* Space between videos */
-  margin: 20px; /* Margin around the grid */
+  
+
 }
 
 .video-container {
   position: relative;
-  width: 100%; /* Full width of the grid cell */
-  overflow: hidden; /* Hide overflow if necessary */
+  width: 60%; /* Full width of the container */
+  height: 60%; /* Maintain aspect ratio */
+  margin-top: 10px;
+  margin-left: 100px;  
+  overflow: hidden;
   border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 100px 100px 100px rgba(222, 4, 4, 0.2); /* Optional: shadow effect */
 }
-
-.video-container video {
-  width: 100%; /* Full width of the container */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 10px; /* Optional: rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+video {
+  width: 100%; /* Make the video fill the container width */
+  height: 100%; /* Make the video fill the container height */
+  object-fit: cover; /* Cover the entire container, preserving aspect ratio */
 }
 
 .surprise-section {
@@ -246,10 +248,10 @@ body {
 
 .image {
   display: none; /* Start with images hidden */
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 50%; /* Makes the image circular */
-  width: 150px; /* Adjust the width */
-  height: 150px; /* Adjust the height to match width for a circle */
+  width: 170px; /* Adjust the width */
+  height: 170px; /* Adjust the height to match width for a circle */
   object-fit: cover; /* Ensures the image covers the area without stretching */
   transition: opacity 1s ease; /* Transition effect for opacity */
 }
@@ -313,4 +315,32 @@ button:hover {
       transform: translateY(-100vh) rotate(360deg);
       opacity: 0;
   }
+}
+
+
+/* Add the CSS directly here for demonstration */
+footer {
+
+ 
+  color: white; /* Text color */
+  text-align: center; /* Center-align the text */
+  padding: 20px; /* Padding around the footer */
+  position: relative; /* Relative positioning */
+  bottom: 0; /* Position it at the bottom */
+  width: 100%; /* Full width */
+  font-family: Arial, sans-serif; /* Font style */
+}
+
+footer p {
+  margin: 5px 0; /* Margins for the paragraphs */
+  font-size: 17px; /* Font size */
+}
+
+footer a {
+  color: #3498db; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover */
 }
