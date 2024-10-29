@@ -335,4 +335,3 @@ for (let i = 0; i < heartCount; i++) {
 
 // Create a new heart every milisecond
 setInterval(createHeart, 100); // Adjust the interval as needed
-needed
