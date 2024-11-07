@@ -29,6 +29,11 @@ const displayItems = (item, index, active) => {
   item.style.setProperty('--active', (index-active)/$items.length)
 }
 
+    // Function to show the message when the box is clicked
+    function showMessage() {
+        alert("Happy Anniversary");
+    }
+
 /*--------------------
 Animate
 --------------------*/

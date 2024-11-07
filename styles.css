@@ -4,6 +4,35 @@ body {
   background: linear-gradient(135deg, rgb(249, 16, 16), #9909e0);
 }
 
+/* Style for the message box */
+.message-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background-color: #ff6666;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.1s;
+  margin-top: 100px;
+  margin-left:100px;
+}
+
+  /* Animation for clicking */
+  .message-box:active {
+      transform: scale(0.95);
+  }
+
+  /* Heart icon style */
+  .heart {
+      color: #fff;
+      font-size: 2.5em;
+  }
+
 .carousel {
   position: relative;
   z-index: 1;
