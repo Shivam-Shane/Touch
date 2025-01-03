@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /*--------------------
 Authentication Modal
 --------------------*/
-const predefinedCodes = ['shane', 'shiva', 'pilla', 'kaju'];
+const predefinedCodes = ['Code', 'Python', 'ML'];
 let incorrectAttempts = 0;
 const maxAttempts = 10;
 const blockDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
